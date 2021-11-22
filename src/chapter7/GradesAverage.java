@@ -1,5 +1,6 @@
 package chapter7;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GradesAverage {
@@ -12,7 +13,12 @@ public class GradesAverage {
         grades= new int[scanner.nextInt()];
 
         getGrades();
-        sumGrades();
+        scanner.close();
+        System.out.println("Average: "+ String.format("%.2f", calculateAverage()));
+        System.out.println("Lowest number: "+ getLowest());
+        System.out.println("Highest number: "+ getHighest());
+
+
     }
 
     public static void getGrades(){
@@ -29,6 +35,40 @@ public class GradesAverage {
         }
 
         return sum;
+    }
+
+    public static double calculateAverage(){
+        return calculateSum()/grades.length;
+    }
+
+    public static int getLowest(){
+        Arrays.sort(grades);
+        return grades[0];
+
+        //otro algoritmo para sacarlo
+
+        /* int lowest= grades[0];
+        for (int grade:grades){
+        if (grade < highest) {
+        lowest = grade;
+        }
+        return lowest;
+         */
+    }
+
+    public static int getHighest(){
+        Arrays.sort(grades);
+        return grades[grades.length -1];
+
+        //otro algoritmo para sacarlo
+
+        /* int highest = grades[0];
+        for (int grade:grades){
+        if (grade > highest) {
+        highest = grade;
+        }
+        return highest;
+         */
     }
 
 }
